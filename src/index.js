@@ -56,7 +56,7 @@ async function handleSubmit(e) {
   } catch (error) {
 
     Notiflix.Notify.failure(refs.errorRespMessage);
-  } 
+  }
 }
 
 function renderMarkup(images) {
@@ -153,14 +153,7 @@ async function fetchAndRenderImages() {
 
 
 function handleButtonVisibility() {
- const { height: cardHeight } = document
-  .querySelector(".gallery")
-  .firstElementChild.getBoundingClientRect();
-
-window.scrollBy({
-  top: cardHeight * 2,
-  behavior: "smooth",
-});
+  btn.classList.toggle('show', window.scrollY > 300);
 }
 
 function handleClick(e) {
