@@ -36,8 +36,6 @@ async function handleSubmit(e) {
 
   let query = form.searchQuery.value.trim();
 
-
-
   if (query === '') {
        return Notiflix.Notify.failure(refs.emptyMessage);
   }
@@ -58,7 +56,7 @@ async function handleSubmit(e) {
   } catch (error) {
 
     Notiflix.Notify.failure(refs.errorRespMessage);
-  }
+  } 
 }
 
 function renderMarkup(images) {
@@ -149,15 +147,24 @@ async function fetchAndRenderImages() {
     renderMarkup(result.hits);
   } catch (error) {
     Notiflix.Notify.failure(refs.errorRespMessage);
-  }
+  };
+
 }
 
 
 function handleButtonVisibility() {
-  btn.classList.toggle('show', window.scrollY > 300);
+ const { height: cardHeight } = document
+  .querySelector(".gallery")
+  .firstElementChild.getBoundingClientRect();
+
+window.scrollBy({
+  top: cardHeight * 2,
+  behavior: "smooth",
+});
 }
 
 function handleClick(e) {
   e.preventDefault();
   window.scrollTo({ top: 0, behavior: 'smooth' });
+
 }
